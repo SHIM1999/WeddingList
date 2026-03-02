@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>윤건우 결혼식 축의금 명단</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #8b1a2c;
+      --red-dark: #5c0f1c;
+      --red-light: #fdf0f2;
+      --gold: #c9a96e;
+      --gold-light: #fdf7ee;
+      --bg: #fdf8f2;
+      --card-bg: #ffffff;
+      --text: #2c1810;
+      --text-muted: #888;
+      --border: #e8ddd5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: linear-gradient(135deg, var(--red-dark), var(--red));
+      color: white;
+      padding: 30px 20px 24px;
+      text-align: center;
+      position: relative;
+    }
+    .header-ornament { font-size: 18px; opacity: 0.6; margin-bottom: 6px; letter-spacing: 6px; }
+    .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 10px; }
+    .header-sub {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 8px;
+      font-size: 13px;
+    }
+    .header-sub span {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+    }
+
+    /* ─── SUMMARY CARDS ─── */
+    .summary-wrap { max-width: 1200px; margin: 0 auto; padding: 18px 16px 8px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 14px 12px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(139,26,44,0.08);
+      border: 1px solid var(--border);
+    }
+    .card-label { font-size: 11px; color: var(--text-muted); margin-bottom: 5px; }
+    .card-value { font-size: 18px; font-weight: 700; color: var(--red); line-height: 1.2; }
+    .card-sub { font-size: 11px; color: #bbb; margin-top: 3px; }
+
+    /* ─── CONTROLS ─── */
+    .controls { max-width: 1200px; margin: 0 auto; padding: 10px 16px; }
+    .search-row { display: flex; gap: 8px; margin-bottom: 10px; align-items: center; flex-wrap: wrap; }
+    .search-box { flex: 1; min-width: 180px; position: relative; }
+    .search-box input {
+      width: 100%; padding: 9px 14px 9px 38px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 14px; font-family: 'Noto Sans KR', sans-serif;
+      background: white; outline: none; transition: border-color 0.2s;
+    }
+    .search-box input:focus { border-color: var(--red); }
+    .search-icon { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); font-size: 16px; }
+
+    .btn {
+      padding: 9px 16px; border: none; border-radius: 8px; cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 500;
+      transition: all 0.18s; white-space: nowrap;
+    }
+    .btn-edit { background: #e67e22; color: white; }
+    .btn-edit:hover { background: #ca6f1e; }
+    .btn-done { background: #27ae60; color: white; }
+    .btn-done:hover { background: #1e8449; }
+    .btn-add { background: var(--red); color: white; }
+    .btn-add:hover { background: var(--red-dark); }
+    .btn-danger { background: #e74c3c; color: white; font-size: 11px; padding: 4px 8px; border-radius: 5px; }
+    .btn-danger:hover { background: #c0392b; }
+    .btn-secondary { background: #ecf0f1; color: #555; }
+    .btn-secondary:hover { background: #dce1e3; }
+    .btn-export { background: #2980b9; color: white; }
+    .btn-export:hover { background: #1f6897; }
+
+    /* ─── FILTER TABS ─── */
+    .tabs { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
+    .tab {
+      padding: 5px 13px; border-radius: 18px; border: 1.5px solid var(--border);
+      background: white; cursor: pointer; font-size: 12px;
+      font-family: 'Noto Sans KR', sans-serif; transition: all 0.18s;
+    }
+    .tab.active { background: var(--red); border-color: var(--red); color: white; }
+    .tab:hover:not(.active) { border-color: var(--red); color: var(--red); }
+    .tab-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; font-weight: 500; }
+
+    /* ─── TABLE ─── */
+    .table-wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px 40px; overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      background: white; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 14px rgba(139,26,44,0.08);
+    }
+    thead tr { background: var(--red); color: white; }
+    th { padding: 11px 10px; font-size: 12px; font-weight: 500; text-align: left; white-space: nowrap; }
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { background: var(--red-dark); }
+    td { padding: 9px 10px; font-size: 13px; border-bottom: 1px solid #f5ece7; vertical-align: middle; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: #fff8f5; }
+    .absent td { opacity: 0.45; }
+
+    .amount-cell { font-weight: 600; color: var(--red); white-space: nowrap; }
+    .num-cell { color: #bbb; font-size: 11px; }
+    .name-cell { font-weight: 500; min-width: 80px; }
+    .note-cell { color: var(--text-muted); font-size: 12px; max-width: 120px; }
+
+    /* badges */
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 10px;
+      font-size: 11px; font-weight: 500; white-space: nowrap;
+    }
+    .b-groom    { background: #fde8ea; color: #8b1a2c; }
+    .b-father   { background: #e8effe; color: #1a3b8b; }
+    .b-mother   { background: #fde8f8; color: #7b1a8b; }
+    .b-unknown  { background: #f0f0f0; color: #999; }
+    .b-family   { background: #fde8e8; color: #c0392b; }
+    .b-relative { background: #e8fde8; color: #27ae60; }
+    .b-friend   { background: #e8f4fd; color: #2980b9; }
+    .b-work     { background: #fdf5e8; color: #e67e22; }
+    .b-acquaint { background: #f0e8fd; color: #8e44ad; }
+    .b-etc      { background: #f0f0f0; color: #666; }
+
+    .attend-yes { color: #27ae60; font-size: 12px; }
+    .attend-no  { color: #e74c3c; font-size: 12px; }
+
+    /* total row */
+    tfoot tr td {
+      background: var(--gold-light); font-weight: 700;
+      color: var(--red); font-size: 13px; border-top: 2px solid var(--gold);
+    }
+
+    /* ─── EDIT INPUTS ─── */
+    .ei {
+      border: 1px solid #ddd; border-radius: 5px;
+      padding: 4px 7px; font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12px; width: 100%; min-width: 60px;
+      background: #fffef9;
+    }
+    .ei:focus { outline: none; border-color: var(--red); background: white; }
+    select.ei { cursor: pointer; }
+    input[type=number].ei { min-width: 90px; }
+
+    /* ─── FAB ─── */
+    .fab {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--red); color: white; border: none;
+      font-size: 30px; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(139,26,44,0.35);
+      display: none; align-items: center; justify-content: center;
+      transition: all 0.2s; z-index: 50;
+    }
+    .fab.show { display: flex; }
+    .fab:hover { background: var(--red-dark); transform: scale(1.08); }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5); z-index: 100;
+      align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: white; border-radius: 16px;
+      padding: 26px; width: 100%; max-width: 460px;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .modal h3 { font-size: 17px; color: var(--red); margin-bottom: 18px; }
+    .form-group { margin-bottom: 13px; }
+    .form-group label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; font-weight: 500; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 9px 12px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: 'Noto Sans KR', sans-serif; font-size: 14px; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--red); }
+    .modal-btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
+    .checkbox-row { display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+    .checkbox-row input { width: auto; }
+
+    /* ─── EMPTY STATE ─── */
+    .empty { text-align: center; padding: 40px; color: var(--text-muted); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .header h1 { font-size: 20px; }
+      .summary { grid-template-columns: repeat(2, 1fr); }
+      th, td { padding: 7px 6px; font-size: 11px; }
+      .card-value { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-ornament">♦ ♥ ♦</div>
+  <h1>윤건우 결혼식 축의금 명단</h1>
+  <div class="header-sub">
+    <span>👨 아버지 &nbsp;<strong>윤영호</strong></span>
+    <span>👩 어머니 &nbsp;<strong>한승희</strong></span>
+    <span>🤵 신랑 &nbsp;<strong>윤건우 (SON)</strong></span>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary-wrap">
+  <div class="summary" id="summaryCards"></div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-row">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="이름 또는 메모 검색..." oninput="render()" />
+    </div>
+    <button class="btn btn-edit" id="editBtn" onclick="toggleEdit()">✏️ 수정모드</button>
+    <button class="btn btn-export" onclick="exportCSV()">⬇ CSV</button>
+    <button class="btn btn-secondary" id="resetBtn" onclick="resetData()" style="display:none">🔄 초기화</button>
+  </div>
+
+  <div class="tab-label">측 (Side)</div>
+  <div class="tabs" id="sideTabs">
+    <button class="tab active" onclick="setFilter('side','전체',this)">전체</button>
+    <button class="tab" onclick="setFilter('side','신랑 윤건우',this)">신랑 윤건우</button>
+    <button class="tab" onclick="setFilter('side','아버지 윤영호',this)">아버지 윤영호</button>
+    <button class="tab" onclick="setFilter('side','어머니 한승희',this)">어머니 한승희</button>
+    <button class="tab" onclick="setFilter('side','미분류',this)">미분류</button>
+  </div>
+
+  <div class="tab-label">관계 (Relation)</div>
+  <div class="tabs" id="relTabs">
+    <button class="tab active" onclick="setFilter('rel','전체',this)">전체</button>
+    <button class="tab" onclick="setFilter('rel','가족',this)">가족</button>
+    <button class="tab" onclick="setFilter('rel','친척',this)">친척</button>
+    <button class="tab" onclick="setFilter('rel','친구',this)">친구</button>
+    <button class="tab" onclick="setFilter('rel','직장동료',this)">직장동료</button>
+    <button class="tab" onclick="setFilter('rel','지인',this)">지인</button>
+    <button class="tab" onclick="setFilter('rel','기타',this)">기타</button>
+    <button class="tab" onclick="setFilter('rel','미분류',this)">미분류</button>
+  </div>
+</div>
+
+<!-- TABLE -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:36px">#</th>
+        <th>성함</th>
+        <th class="sortable" onclick="sortAmt()">금액 <span id="sortIcon">↕</span></th>
+        <th>측</th>
+        <th>관계</th>
+        <th>비고</th>
+        <th>참석</th>
+        <th id="editColHeader" style="display:none">관리</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+    <tfoot id="tfoot"></tfoot>
+  </table>
+</div>
+
+<!-- FAB -->
+<button class="fab" id="fab" onclick="openModal()">＋</button>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalBg(event)">
+  <div class="modal">
+    <h3 id="modalTitle">새 하객 추가</h3>
+    <div class="form-group">
+      <label>성함 *</label>
+      <input type="text" id="mName" placeholder="이름 입력" />
+    </div>
+    <div class="form-group">
+      <label>금액 (원) *</label>
+      <input type="number" id="mAmount" placeholder="100000" step="10000" min="0" />
+    </div>
+    <div class="form-group">
+      <label>측</label>
+      <select id="mSide">
+        <option value="미분류">미분류</option>
+        <option value="신랑 윤건우">신랑 윤건우</option>
+        <option value="아버지 윤영호">아버지 윤영호</option>
+        <option value="어머니 한승희">어머니 한승희</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>관계</label>
+      <select id="mRel">
+        <option value="미분류">미분류</option>
+        <option value="가족">가족</option>
+        <option value="친척">친척</option>
+        <option value="친구">친구</option>
+        <option value="직장동료">직장동료</option>
+        <option value="지인">지인</option>
+        <option value="기타">기타</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>비고</label>
+      <input type="text" id="mNote" placeholder="메모 (선택)" />
+    </div>
+    <div class="form-group">
+      <label class="checkbox-row">
+        <input type="checkbox" id="mPresent" checked />
+        참석
+      </label>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-secondary" onclick="closeModal()">취소</button>
+      <button class="btn btn-add" onclick="saveModal()">저장</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  DEFAULT DATA  (from 7 pages of handwritten list)
+// ═══════════════════════════════════════════════════════
+const DEFAULT = [
+  {id:1,  num:1,  name:'이바호',         amount:1000000, side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:2,  num:2,  name:'구성적',         amount:100000,  side:'미분류', rel:'미분류', note:'결석',       present:false},
+  {id:3,  num:3,  name:'정경희',         amount:500000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:4,  num:4,  name:'신근홍',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:5,  num:5,  name:'상구할머니',     amount:200000,  side:'미분류', rel:'가족',   note:'',          present:true},
+  {id:6,  num:6,  name:'전경훈',         amount:1000000, side:'미분류', rel:'미분류', note:'김정호바',   present:true},
+  {id:7,  num:7,  name:'이순미',         amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:8,  num:8,  name:'송영득',         amount:250000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:9,  num:9,  name:'김호엄',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:10, num:10, name:'김규다',         amount:500000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:11, num:11, name:'최호성',         amount:200000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:12, num:12, name:'강대석',         amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:13, num:13, name:'박귀춘',         amount:200000,  side:'미분류', rel:'미분류', note:'부안',       present:true},
+  {id:14, num:14, name:'최경용',         amount:400000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:15, num:15, name:'편혜인',         amount:200000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:16, num:16, name:'이경순',         amount:200000,  side:'미분류', rel:'미분류', note:'요인',       present:true},
+  {id:17, num:17, name:'김영춘',         amount:500000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:18, num:18, name:'김민설',         amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:19, num:19, name:'박상설',         amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:20, num:20, name:'미수민',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:21, num:21, name:'강춘향',         amount:500000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:22, num:22, name:'전홍우',         amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:23, num:23, name:'유승위',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:24, num:24, name:'송병국',         amount:800000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:25, num:25, name:'권세홈',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:26, num:26, name:'은미성',         amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:27, num:27, name:'홍승명',         amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:28, num:28, name:'이꽃이친구',     amount:300000,  side:'미분류', rel:'친구',   note:'',          present:true},
+  {id:29, num:29, name:'이주원',         amount:1000000, side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:30, num:30, name:'김우정',         amount:300000,  side:'미분류', rel:'친구',   note:'한친고',     present:true},
+  {id:31, num:31, name:'임대이',         amount:150000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:32, num:32, name:'은특현',         amount:1000000, side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:33, num:33, name:'유대권',         amount:100000,  side:'미분류', rel:'미분류', note:'국예',       present:true},
+  {id:34, num:34, name:'한극민',         amount:1000000, side:'미분류', rel:'미분류', note:'누나부다',   present:true},
+  {id:35, num:35, name:'한범리',         amount:1000000, side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:36, num:36, name:'은성원',         amount:500000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:37, num:37, name:'허민환',         amount:150000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:38, num:38, name:'한정호',         amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:39, num:39, name:'한응화',         amount:200000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:40, num:40, name:'한정화',         amount:200000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:41, num:41, name:'이인다',         amount:200000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:42, num:42, name:'한재류',         amount:200000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:43, num:43, name:'형제하 김진연', amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:44, num:44, name:'이정어',         amount:150000,  side:'미분류', rel:'미분류', note:'가세이',     present:true},
+  {id:45, num:45, name:'최제선',         amount:100000,  side:'미분류', rel:'미분류', note:'실서울이아', present:true},
+  {id:46, num:46, name:'김진현',         amount:100000,  side:'미분류', rel:'미분류', note:'후안',       present:true},
+  {id:47, num:47, name:'이재은',         amount:300000,  side:'미분류', rel:'미분류', note:'국안',       present:true},
+  {id:48, num:48, name:'김비유석',       amount:300000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:49, num:49, name:'김선화',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:50, num:50, name:'방인후',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:51, num:51, name:'장홍정',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:52, num:52, name:'배민진',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:53, num:53, name:'장민냐',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:54, num:54, name:'최유제',         amount:200000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:55, num:55, name:'김성수',         amount:100000,  side:'미분류', rel:'미분류', note:'6VP',       present:true},
+  {id:56, num:56, name:'은병용',         amount:250000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:57, num:57, name:'최정훈',         amount:100000,  side:'미분류', rel:'미분류', note:'실서울이자', present:true},
+  {id:58, num:58, name:'강복저',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:59, num:59, name:'배이석',         amount:50000,   side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:60, num:60, name:'강정근',         amount:40000,   side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:61, num:61, name:'정전대',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:62, num:62, name:'강진석',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:63, num:63, name:'박준건',         amount:100000,  side:'미분류', rel:'미분류', note:'실서이자',   present:true},
+  {id:64, num:64, name:'이재인',         amount:200000,  side:'미분류', rel:'미분류', note:'실서진가',   present:true},
+  {id:65, num:65, name:'심서훈',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:66, num:66, name:'서대백',         amount:50000,   side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:67, num:67, name:'강루순',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:68, num:68, name:'방근성',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:69, num:69, name:'고태현',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:70, num:70, name:'강태현',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:71, num:71, name:'작호준',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:72, num:72, name:'최진현',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:73, num:73, name:'김선원',         amount:100000,  side:'미분류', rel:'미분류', note:'',          present:true},
+  {id:74, num:74, name:'방요이',         amount:100000,  side:'미분류', rel:'미분류', note:'6VP',       present:true},
+  {id:75, num:75, name:'최가여',         amount:100000,  side:'미분류', rel:'미분류', note:'6VP',       present:true},
+];
+
+// ═══════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════
+let data = [];
+let editMode = false;
+let filters = { side: '전체', rel: '전체' };
+let sortDir = 0; // 0=none, 1=asc, -1=desc
+let nextId = 76;
+
+// ═══════════════════════════════════════════════════════
+//  PERSISTENCE
+// ═══════════════════════════════════════════════════════
+function load() {
+  const s = localStorage.getItem('wg_data');
+  if (s) {
+    try {
+      data = JSON.parse(s);
+      nextId = Math.max(...data.map(d => d.id), 75) + 1;
+    } catch { data = JSON.parse(JSON.stringify(DEFAULT)); }
+  } else {
+    data = JSON.parse(JSON.stringify(DEFAULT));
+  }
+}
+function save() { localStorage.setItem('wg_data', JSON.stringify(data)); }
+
+function resetData() {
+  if (!confirm('모든 수정 내용이 초기화됩니다.\n정말 초기화하시겠습니까?')) return;
+  data = JSON.parse(JSON.stringify(DEFAULT));
+  nextId = 76;
+  save(); render();
+}
+
+// ═══════════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════════
+function fmt(n) { return Number(n).toLocaleString('ko-KR') + '원'; }
+
+const SIDE_CLS = {
+  '신랑 윤건우': 'b-groom', '아버지 윤영호': 'b-father',
+  '어머니 한승희': 'b-mother', '미분류': 'b-unknown'
+};
+const REL_CLS = {
+  '가족': 'b-family', '친척': 'b-relative', '친구': 'b-friend',
+  '직장동료': 'b-work', '지인': 'b-acquaint', '기타': 'b-etc', '미분류': 'b-unknown'
+};
+
+function getFiltered() {
+  const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+  return data.filter(g => {
+    if (filters.side !== '전체' && g.side !== filters.side) return false;
+    if (filters.rel !== '전체' && g.rel !== filters.rel) return false;
+    if (q && !g.name.toLowerCase().includes(q) && !(g.note||'').toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  SORT
+// ═══════════════════════════════════════════════════════
+function sortAmt() {
+  if (sortDir === 0 || sortDir === 1) { sortDir = -1; }
+  else { sortDir = 1; }
+  document.getElementById('sortIcon').textContent = sortDir === -1 ? '↓' : '↑';
+  data.sort((a, b) => (a.amount - b.amount) * sortDir);
+  render();
+}
+
+// ═══════════════════════════════════════════════════════
+//  FILTERS
+// ═══════════════════════════════════════════════════════
+function setFilter(type, value, el) {
+  filters[type] = value;
+  const groupId = type === 'side' ? 'sideTabs' : 'relTabs';
+  document.querySelectorAll('#' + groupId + ' .tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+// ═══════════════════════════════════════════════════════
+//  SUMMARY
+// ═══════════════════════════════════════════════════════
+function renderSummary() {
+  const total = data.reduce((s, g) => s + Number(g.amount), 0);
+  const present = data.filter(g => g.present).length;
+  const bySide = (s) => {
+    const arr = data.filter(g => g.side === s);
+    return { amt: arr.reduce((x,g)=>x+Number(g.amount),0), cnt: arr.length };
+  };
+  const un = bySide('미분류');
+  const gr = bySide('신랑 윤건우');
+  const fa = bySide('아버지 윤영호');
+  const mo = bySide('어머니 한승희');
+
+  const cards = [
+    { label: '총 축의금', val: fmt(total), sub: `참석 ${present}명 / 총 ${data.length}명` },
+    { label: '신랑 윤건우', val: fmt(gr.amt), sub: `${gr.cnt}명` },
+    { label: '아버지 윤영호', val: fmt(fa.amt), sub: `${fa.cnt}명` },
+    { label: '어머니 한승희', val: fmt(mo.amt), sub: `${mo.cnt}명` },
+    { label: '미분류', val: fmt(un.amt), sub: `${un.cnt}명` },
+  ];
+
+  document.getElementById('summaryCards').innerHTML = cards.map(c =>
+    `<div class="card">
+      <div class="card-label">${c.label}</div>
+      <div class="card-value">${c.val}</div>
+      <div class="card-sub">${c.sub}</div>
+    </div>`
+  ).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+//  TABLE RENDER
+// ═══════════════════════════════════════════════════════
+function renderTable() {
+  const rows = getFiltered();
+  const tbody = document.getElementById('tbody');
+  const tfoot = document.getElementById('tfoot');
+  const editColHdr = document.getElementById('editColHeader');
+  editColHdr.style.display = editMode ? '' : 'none';
+
+  if (rows.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="8" class="empty">검색 결과가 없습니다</td></tr>`;
+    tfoot.innerHTML = '';
+    return;
+  }
+
+  const SIDES = ['미분류','신랑 윤건우','아버지 윤영호','어머니 한승희'];
+  const RELS  = ['미분류','가족','친척','친구','직장동료','지인','기타'];
+
+  tbody.innerHTML = rows.map(g => {
+    const absCls = g.present ? '' : 'absent';
+    if (editMode) {
+      return `<tr class="${absCls}" id="r${g.id}">
+        <td class="num-cell">${g.num}</td>
+        <td><input class="ei" value="${esc(g.name)}" onchange="upd(${g.id},'name',this.value)" style="min-width:80px"></td>
+        <td><input class="ei" type="number" value="${g.amount}" min="0" step="10000"
+              onchange="upd(${g.id},'amount',Number(this.value))" style="min-width:95px"></td>
+        <td><select class="ei" onchange="upd(${g.id},'side',this.value)">
+          ${SIDES.map(s=>`<option value="${s}"${g.side===s?' selected':''}>${s}</option>`).join('')}
+        </select></td>
+        <td><select class="ei" onchange="upd(${g.id},'rel',this.value)">
+          ${RELS.map(r=>`<option value="${r}"${g.rel===r?' selected':''}>${r}</option>`).join('')}
+        </select></td>
+        <td><input class="ei" value="${esc(g.note||'')}" onchange="upd(${g.id},'note',this.value)" style="min-width:80px"></td>
+        <td><select class="ei" style="min-width:60px" onchange="upd(${g.id},'present',this.value==='true')">
+          <option value="true"${g.present?' selected':''}>참석</option>
+          <option value="false"${!g.present?' selected':''}>결석</option>
+        </select></td>
+        <td><button class="btn btn-danger" onclick="del(${g.id})">삭제</button></td>
+      </tr>`;
+    } else {
+      return `<tr class="${absCls}">
+        <td class="num-cell">${g.num}</td>
+        <td class="name-cell">${esc(g.name)}</td>
+        <td class="amount-cell">${fmt(g.amount)}</td>
+        <td><span class="badge ${SIDE_CLS[g.side]||'b-unknown'}">${g.side}</span></td>
+        <td><span class="badge ${REL_CLS[g.rel]||'b-unknown'}">${g.rel}</span></td>
+        <td class="note-cell">${esc(g.note||'')}</td>
+        <td>${g.present
+          ? '<span class="attend-yes">✅ 참석</span>'
+          : '<span class="attend-no">❌ 결석</span>'}</td>
+      </tr>`;
+    }
+  }).join('');
+
+  const total = rows.reduce((s,g) => s + Number(g.amount), 0);
+  const pCnt = rows.filter(g=>g.present).length;
+  const cols = editMode ? 5 : 4;
+  tfoot.innerHTML = `<tr>
+    <td></td><td>합계</td>
+    <td>${fmt(total)}</td>
+    <td colspan="${cols}">총 ${rows.length}명 중 참석 ${pCnt}명</td>
+  </tr>`;
+}
+
+function render() { renderSummary(); renderTable(); }
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ═══════════════════════════════════════════════════════
+//  EDIT MODE
+// ═══════════════════════════════════════════════════════
+function toggleEdit() {
+  editMode = !editMode;
+  const btn = document.getElementById('editBtn');
+  const fab = document.getElementById('fab');
+  const rst = document.getElementById('resetBtn');
+  if (editMode) {
+    btn.textContent = '✅ 완료';
+    btn.className = 'btn btn-done';
+    fab.classList.add('show');
+    rst.style.display = '';
+  } else {
+    btn.textContent = '✏️ 수정모드';
+    btn.className = 'btn btn-edit';
+    fab.classList.remove('show');
+    rst.style.display = 'none';
+    save();
+  }
+  render();
+}
+
+function upd(id, field, value) {
+  const g = data.find(x => x.id === id);
+  if (g) { g[field] = value; save(); if (['side','rel','present','amount'].includes(field)) renderSummary(); }
+}
+
+function del(id) {
+  if (!confirm('이 항목을 삭제하시겠습니까?')) return;
+  data = data.filter(x => x.id !== id);
+  save(); render();
+}
+
+// ═══════════════════════════════════════════════════════
+//  ADD MODAL
+// ═══════════════════════════════════════════════════════
+function openModal() {
+  document.getElementById('modalTitle').textContent = '새 하객 추가';
+  document.getElementById('mName').value = '';
+  document.getElementById('mAmount').value = '';
+  document.getElementById('mSide').value = '미분류';
+  document.getElementById('mRel').value = '미분류';
+  document.getElementById('mNote').value = '';
+  document.getElementById('mPresent').checked = true;
+  document.getElementById('modalOverlay').classList.add('show');
+  setTimeout(() => document.getElementById('mName').focus(), 100);
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('show'); }
+function closeModalBg(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+
+function saveModal() {
+  const name = document.getElementById('mName').value.trim();
+  const amount = parseInt(document.getElementById('mAmount').value) || 0;
+  if (!name) { alert('성함을 입력해주세요'); return; }
+  const maxNum = data.length > 0 ? Math.max(...data.map(d => d.num)) : 0;
+  data.push({
+    id: nextId++,
+    num: maxNum + 1,
+    name,
+    amount,
+    side: document.getElementById('mSide').value,
+    rel: document.getElementById('mRel').value,
+    note: document.getElementById('mNote').value.trim(),
+    present: document.getElementById('mPresent').checked,
+  });
+  save(); closeModal(); render();
+}
+
+// ═══════════════════════════════════════════════════════
+//  CSV EXPORT
+// ═══════════════════════════════════════════════════════
+function exportCSV() {
+  const rows = getFiltered();
+  const header = ['번호','성함','금액','측','관계','비고','참석'];
+  const lines = [header.join(',')];
+  rows.forEach(g => {
+    lines.push([
+      g.num,
+      `"${g.name}"`,
+      g.amount,
+      `"${g.side}"`,
+      `"${g.rel}"`,
+      `"${g.note||''}"`,
+      g.present ? '참석' : '결석'
+    ].join(','));
+  });
+  const blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = '윤건우_결혼식_축의금.csv';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+load();
+render();
+</script>
+</body>
+</html>
